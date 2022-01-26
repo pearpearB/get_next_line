@@ -4,12 +4,16 @@
 
 int main()
 {
-	int fd = open("test.txt", O_RDONLY);
+	int		fd;
+	char	*ret;
 
-	while(get_next_line(fd))
+	fd = open("test.txt", O_RDONLY);
+
+	while((ret = get_next_line(fd)) > 0)
 	{
-		printf("%s", get_next_line(fd));
+		printf("%s", ret);
 	}
-	
+	printf("%s", ret);
+
 	return 0;
 }
