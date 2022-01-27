@@ -11,9 +11,9 @@ int main()
 
 	while((ret = get_next_line(fd)) > 0)
 	{
-		printf("%s", ret);
+		printf(">>>%s\n", ret);
 	}
-	printf("%s", ret);
+	printf("--->%s\n", ret);
 
 	return 0;
 }
