@@ -15,5 +15,7 @@ int main()
 	}
 	printf("--->%s\n", ret);
 
+	close(fd);
+
 	return 0;
 }
