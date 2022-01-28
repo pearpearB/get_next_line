@@ -6,28 +6,24 @@
 /*   By: jabae <jabae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 15:59:14 by jabae             #+#    #+#             */
-/*   Updated: 2022/01/28 16:44:25 by jabae            ###   ########.fr       */
+/*   Updated: 2022/01/28 17:44:30 by jabae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
 
-static char *split_line(char	*storage)
+static char *split_line(char	**storage)
 {
 	char	*ptr_newline;
 	char	*next_line;
 	char	*get_line;
 
-printf("1 storage %s\n", storage); // 다시 부르면 쓰레기값이 들어있다...
-
-	ptr_newline = ft_strchr(storage, '\n');
+	ptr_newline = ft_strchr(*storage, '\n');
 	next_line = ft_strdup(ptr_newline + 1);
-	get_line = ft_substr(storage, 0, ft_strlen(storage) - ft_strlen(ptr_newline) + 1);
-	free(storage);
-	storage = next_line; // next_line은 멀쩡한데...
-
-printf("2 storage %s\n", storage);
+	get_line = ft_substr(*storage, 0, ft_strlen(*storage) - ft_strlen(ptr_newline) + 1);
+	free(*storage);
+	*storage = next_line;
 
 	return (get_line);
 
@@ -48,7 +44,7 @@ char	*get_next_line(int fd)
 		buf[buf_len] = '\0';
 		storage = ft_strjoin(storage, buf);
 		if (ft_strchr(storage, '\n'))
-			return (split_line(storage));
+			return (split_line(&storage));
 	}
 	if (storage != NULL)
 	{
