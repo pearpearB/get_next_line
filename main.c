@@ -12,8 +12,12 @@ int main()
 	while((ret = get_next_line(fd)) > 0)
 	{
 		printf(">>>%s\n", ret);
+		free(ret);
 	}
 	printf("--->%s\n", ret);
+	free(ret);
+
+	close(fd);
 
 	return 0;
 }
