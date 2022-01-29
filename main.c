@@ -19,5 +19,7 @@ int main()
 
 	close(fd);
 
+	close(fd);
+
 	return 0;
 }

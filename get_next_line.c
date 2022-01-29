@@ -53,5 +53,6 @@ printf("buf_len: %zu\n", buf_len);
 		storage = NULL;
 		return (get_line);
 	}
+
 	return (NULL);
-} 
+}
