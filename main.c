@@ -5,16 +5,19 @@
 int main()
 {
 	int		fd;
+	int		i;
 	char	*ret;
 
 	fd = open("test.txt", O_RDONLY);
 
 	while((ret = get_next_line(fd)) > 0)
 	{
-		printf(">>>%s\n", ret);
+		printf("in %d\n", i);
+		printf(">>>%s", ret);
 		free(ret);
 	}
-	printf("--->%s\n", ret);
+	printf("out %d\n", i);
+	printf("--->%s", ret);
 	free(ret);
 
 	close(fd);
