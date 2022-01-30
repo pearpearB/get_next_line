@@ -12,12 +12,11 @@ int main()
 
 	while((ret = get_next_line(fd)) > 0)
 	{
-		printf("in %d\n", i);
-		printf(">>>%s", ret);
+		printf(">%d : %s", i, ret);
 		free(ret);
+		i++;
 	}
-	printf("out %d\n", i);
-	printf("--->%s", ret);
+	printf("->%d : %s", i, ret);
 	free(ret);
 
 	close(fd);
