@@ -6,7 +6,7 @@
 /*   By: jabae <jabae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 16:00:03 by jabae             #+#    #+#             */
-/*   Updated: 2022/01/30 16:12:53 by jabae            ###   ########.fr       */
+/*   Updated: 2022/02/08 22:41:56 by jabae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ char	*ft_strchr(const char *s, int c)
 			return ((char *)ptr);
 		ptr++;
 	}
-	if ((char)c == '\0')
-		return ((char *)ptr);
 	return (NULL);
 }
 

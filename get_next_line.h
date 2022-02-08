@@ -6,7 +6,7 @@
 /*   By: jabae <jabae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 16:00:16 by jabae             #+#    #+#             */
-/*   Updated: 2022/01/30 15:35:03 by jabae            ###   ########.fr       */
+/*   Updated: 2022/02/08 22:43:18 by jabae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 100
+#  define BUFFER_SIZE 3
 # endif
 
 # include <unistd.h>
