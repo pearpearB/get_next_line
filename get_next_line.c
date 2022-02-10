@@ -6,7 +6,7 @@
 /*   By: jabae <jabae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 15:59:14 by jabae             #+#    #+#             */
-/*   Updated: 2022/02/01 22:52:03 by jabae            ###   ########.fr       */
+/*   Updated: 2022/02/10 21:30:23 by jabae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*get_next_line(int fd)
 	char		*buf;
 	size_t		buf_len;
 
-	if (fd < 0 || fd > 256 || BUFFER_SIZE <= 0) // OPEN_MAX? 256?
+	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE <= 0) // OPEN_MAX? 256?
 		return (NULL);
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	buf_len = read(fd, buf, BUFFER_SIZE);
