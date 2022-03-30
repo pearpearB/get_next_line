@@ -16,10 +16,8 @@ int main()
 		free(ret);
 		i++;
 	}
-	printf("->%d : %s", i, ret);
+	printf("\n->%d : %s", i, ret);
 	free(ret);
-
-	close(fd);
 
 	close(fd);
 

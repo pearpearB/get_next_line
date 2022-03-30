@@ -6,11 +6,12 @@
 /*   By: jabae <jabae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 15:59:14 by jabae             #+#    #+#             */
-/*   Updated: 2022/02/10 21:30:23 by jabae            ###   ########.fr       */
+/*   Updated: 2022/03/30 18:52:19 by jabae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
 static char	*split_line(char **storage)
 {
@@ -32,7 +33,15 @@ static char	*read_last(char	**storage)
 	char	*last_line;
 
 	if (ft_strchr(*storage, '\n'))
+	{
 		return (split_line(storage));
+	}
+	else if (**storage == '\0')
+	{
+		free(*storage);
+		*storage = NULL;
+		return (NULL);
+	}
 	else
 	{
 		last_line = ft_strdup(*storage);
@@ -48,10 +57,10 @@ char	*get_next_line(int fd)
 	char		*buf;
 	size_t		buf_len;
 
-	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE <= 0) // OPEN_MAX? 256?
-		return (NULL);
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	buf_len = read(fd, buf, BUFFER_SIZE);
+	if (!(fd >= 0 && fd < 256) || BUFFER_SIZE <= 0 || !buf)
+		return (NULL);
 	while (buf_len > 0)
 	{
 		buf[buf_len] = '\0';
@@ -61,7 +70,7 @@ char	*get_next_line(int fd)
 			free(buf);
 			return (split_line(&storage));
 		}
-		buf_len = read(fd, buf, BUFFER_SIZE); // 개행이 없을 때 계속 붙여나갈 수 있도록
+		buf_len = read(fd, buf, BUFFER_SIZE);
 	}
 	free(buf);
 	if (buf_len == 0 && storage)
