@@ -5,8 +5,8 @@
 int main()
 {
 	int		fd;
-	int		i;
 	char	*ret;
+	int		i = 0;
 
 	fd = open("test.txt", O_RDONLY);
 
@@ -16,10 +16,12 @@ int main()
 		free(ret);
 		i++;
 	}
-	printf("\n->%d : %s", i, ret);
+	printf("\n->%d : %s", i, ret); // (NULL)
 	free(ret);
 
 	close(fd);
 
 	return 0;
 }
+
+// gcc -Wall -Wextra -Werror -D BUFFER_SIZE=42 ./*.c

@@ -6,16 +6,12 @@
 /*   By: jabae <jabae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 16:00:16 by jabae             #+#    #+#             */
-/*   Updated: 2022/03/30 18:00:27 by jabae            ###   ########.fr       */
+/*   Updated: 2022/03/30 19:53:30 by jabae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 100000
-# endif
 
 # include <unistd.h>
 # include <stdlib.h>

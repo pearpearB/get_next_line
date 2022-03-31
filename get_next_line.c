@@ -6,7 +6,7 @@
 /*   By: jabae <jabae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 15:59:14 by jabae             #+#    #+#             */
-/*   Updated: 2022/03/30 18:52:19 by jabae            ###   ########.fr       */
+/*   Updated: 2022/03/31 11:50:58 by jabae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	*get_next_line(int fd)
 {
 	static char	*storage;
 	char		*buf;
-	size_t		buf_len;
+	int			buf_len;
 
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	buf_len = read(fd, buf, BUFFER_SIZE);
