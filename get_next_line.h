@@ -6,7 +6,7 @@
 /*   By: jabae <jabae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 16:00:16 by jabae             #+#    #+#             */
-/*   Updated: 2022/03/30 19:53:30 by jabae            ###   ########.fr       */
+/*   Updated: 2022/04/01 22:35:48 by jabae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <limits.h> // 흠
 
 char	*get_next_line(int fd);
+char	*read_last(char	**storage);
+char	*split_line(char **storage);
 
 size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);

@@ -6,14 +6,14 @@
 /*   By: jabae <jabae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 15:59:14 by jabae             #+#    #+#             */
-/*   Updated: 2022/03/31 11:50:58 by jabae            ###   ########.fr       */
+/*   Updated: 2022/04/01 22:36:10 by jabae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
 
-static char	*split_line(char **storage)
+char	*split_line(char **storage)
 {
 	char	*ptr_newline;
 	char	*next_line;
@@ -28,7 +28,7 @@ static char	*split_line(char **storage)
 	return (get_line);
 }
 
-static char	*read_last(char	**storage)
+char	*read_last(char	**storage)
 {
 	char	*last_line;
 
