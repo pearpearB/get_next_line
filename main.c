@@ -10,6 +10,8 @@ int main()
 
 	fd = open("test.txt", O_RDONLY);
 
+	// close(fd); // unvalid fd 일 때,
+
 	while((ret = get_next_line(fd)) > 0)
 	{
 		printf(">%d : %s", i, ret);
@@ -25,3 +27,4 @@ int main()
 }
 
 // gcc -Wall -Wextra -Werror -D BUFFER_SIZE=42 ./*.c
+// lldb : -g -fsanitize=address
