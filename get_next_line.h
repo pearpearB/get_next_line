@@ -6,7 +6,7 @@
 /*   By: jabae <jabae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 16:00:16 by jabae             #+#    #+#             */
-/*   Updated: 2022/04/01 22:35:48 by jabae            ###   ########.fr       */
+/*   Updated: 2022/04/03 19:01:51 by jabae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <limits.h> // 흠
 
 char	*get_next_line(int fd);
 char	*read_last(char	**storage);

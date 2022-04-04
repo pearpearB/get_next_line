@@ -6,12 +6,11 @@
 /*   By: jabae <jabae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 15:59:14 by jabae             #+#    #+#             */
-/*   Updated: 2022/04/03 17:07:28 by jabae            ###   ########.fr       */
+/*   Updated: 2022/04/03 18:34:20 by jabae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
 char	*split_line(char **storage)
 {
@@ -56,14 +55,14 @@ char	*get_next_line(int fd)
 	static char	*storage;
 	char		*buf;
 	int			buf_len;
-	int			errorcheck;
+	int			error_check;
 
-	errorcheck = 0;
+	error_check = 0;
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	buf_len = read(fd, buf, BUFFER_SIZE);
-	if (!(fd >= 0 && fd < 256) || BUFFER_SIZE <= 0 || !buf)
-		errorcheck = 1;
-	while (buf_len > 0 && !errorcheck)
+	if (fd < 0 || BUFFER_SIZE < 1 || !buf)
+		error_check = 1;
+	while (buf_len > 0 && !error_check)
 	{
 		buf[buf_len] = '\0';
 		storage = ft_strjoin(storage, buf);
@@ -75,7 +74,7 @@ char	*get_next_line(int fd)
 		buf_len = read(fd, buf, BUFFER_SIZE);
 	}
 	free(buf);
-	if (buf_len == 0 && storage && !errorcheck)
+	if (buf_len == 0 && storage && !error_check)
 		return (read_last(&storage));
 	return (NULL);
 }
