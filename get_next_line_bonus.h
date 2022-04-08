@@ -6,7 +6,7 @@
 /*   By: jabae <jabae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 16:00:16 by jabae             #+#    #+#             */
-/*   Updated: 2022/04/03 18:49:36 by jabae            ###   ########.fr       */
+/*   Updated: 2022/04/08 18:17:39 by jabae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@
 # if OPEN_MAX <= 12800
 # define ARRAY_MAX 12800 // 사실 나도 잘 모르겠다....ㅎ
 # endif
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endi
 
 char	*get_next_line(int fd);
 char	*read_last(char	**storage);
