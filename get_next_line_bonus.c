@@ -6,13 +6,13 @@
 /*   By: jabae <jabae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 18:34:14 by jabae             #+#    #+#             */
-/*   Updated: 2022/04/11 16:37:14 by jabae            ###   ########.fr       */
+/*   Updated: 2022/04/11 17:59:44 by jabae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-char	*split_line(char **storage)
+static char	*split_line(char **storage)
 {
 	char	*ptr_newline;
 	char	*next_line;
@@ -27,7 +27,7 @@ char	*split_line(char **storage)
 	return (get_line);
 }
 
-char	*read_last(char	**storage)
+static char	*read_last(char	**storage)
 {
 	char	*last_line;
 
@@ -35,19 +35,22 @@ char	*read_last(char	**storage)
 	{
 		return (split_line(storage));
 	}
-	else if (**storage == '\0')
-	{
-		free(*storage);
-		*storage = NULL;
-		return (NULL);
-	}
 	else
 	{
-		last_line = ft_strdup(*storage);
+		if (**storage != '\0')
+			last_line = ft_strdup(*storage);
+		else
+			last_line = NULL;
 		free(*storage);
 		*storage = NULL;
 		return (last_line);
 	}
+}
+
+static char	*is_error(char *buf)
+{
+	free(buf);
+	return (NULL);
 }
 
 char	*get_next_line(int fd)
@@ -55,14 +58,12 @@ char	*get_next_line(int fd)
 	static char	*storage[OPEN_MAX];
 	char		*buf;
 	int			buf_len;
-	int			error_check;
 
-	error_check = 0;
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	buf_len = read(fd, buf, BUFFER_SIZE);
 	if (fd < 0 || BUFFER_SIZE < 1 || !buf)
-		error_check = 1;
-	while (buf_len > 0 && !error_check)
+		return (is_error(buf));
+	while (buf_len > 0)
 	{
 		buf[buf_len] = '\0';
 		storage[fd] = ft_strjoin(storage[fd], buf);
@@ -74,7 +75,7 @@ char	*get_next_line(int fd)
 		buf_len = read(fd, buf, BUFFER_SIZE);
 	}
 	free(buf);
-	if (buf_len == 0 && storage[fd] && !error_check)
+	if (buf_len == 0 && storage[fd])
 		return (read_last(&storage[fd]));
 	return (NULL);
 }
