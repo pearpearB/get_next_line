@@ -6,12 +6,12 @@
 /*   By: jabae <jabae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 16:00:16 by jabae             #+#    #+#             */
-/*   Updated: 2022/04/08 18:17:39 by jabae            ###   ########.fr       */
+/*   Updated: 2022/04/11 16:36:33 by jabae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -27,7 +27,7 @@
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
-# endi
+# endif
 
 char	*get_next_line(int fd);
 char	*read_last(char	**storage);
