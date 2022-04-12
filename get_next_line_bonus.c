@@ -6,7 +6,7 @@
 /*   By: jabae <jabae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 18:34:14 by jabae             #+#    #+#             */
-/*   Updated: 2022/04/11 17:59:44 by jabae            ###   ########.fr       */
+/*   Updated: 2022/04/11 18:41:19 by jabae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static char	*is_error(char *buf)
 
 char	*get_next_line(int fd)
 {
-	static char	*storage[OPEN_MAX];
+	static char	*storage[ARRAY_MAX];
 	char		*buf;
 	int			buf_len;
 
