@@ -6,7 +6,7 @@
 /*   By: jabae <jabae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 15:59:14 by jabae             #+#    #+#             */
-/*   Updated: 2022/04/11 17:56:05 by jabae            ###   ########.fr       */
+/*   Updated: 2022/04/13 16:16:32 by jabae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,35 +47,31 @@ static char	*read_last(char	**storage)
 	}
 }
 
-static char	*is_error(char *buf)
-{
-	free(buf);
-	return (NULL);
-}
-
 char	*get_next_line(int fd)
 {
 	static char	*storage;
 	char		*buf;
-	int			buf_len;
+	int			read_size;
+	int			error_flag;
 
 	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	buf_len = read(fd, buf, BUFFER_SIZE);
+	read_size = read(fd, buf, BUFFER_SIZE);
+	error_flag = 0;
 	if (fd < 0 || BUFFER_SIZE < 1 || !buf)
-		return (is_error(buf));
-	while (buf_len > 0)
+		error_flag = 1;
+	while (read_size > 0 && !error_flag)
 	{
-		buf[buf_len] = '\0';
+		buf[read_size] = '\0';
 		storage = ft_strjoin(storage, buf);
 		if (ft_strchr(storage, '\n'))
 		{
 			free(buf);
 			return (split_line(&storage));
 		}
-		buf_len = read(fd, buf, BUFFER_SIZE);
+		read_size = read(fd, buf, BUFFER_SIZE);
 	}
 	free(buf);
-	if (buf_len == 0 && storage)
+	if (read_size == 0 && storage && !error_flag)
 		return (read_last(&storage));
 	return (NULL);
 }
