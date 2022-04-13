@@ -6,7 +6,7 @@
 /*   By: jabae <jabae@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 15:59:14 by jabae             #+#    #+#             */
-/*   Updated: 2022/04/13 16:16:32 by jabae            ###   ########.fr       */
+/*   Updated: 2022/04/13 16:53:53 by jabae            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char	*get_next_line(int fd)
 	error_flag = 0;
 	if (fd < 0 || BUFFER_SIZE < 1 || !buf)
 		error_flag = 1;
-	while (read_size > 0 && !error_flag)
+	while (read_size >= READ_SUCCESS && !error_flag)
 	{
 		buf[read_size] = '\0';
 		storage = ft_strjoin(storage, buf);
@@ -71,7 +71,7 @@ char	*get_next_line(int fd)
 		read_size = read(fd, buf, BUFFER_SIZE);
 	}
 	free(buf);
-	if (read_size == 0 && storage && !error_flag)
+	if (read_size == READ_EOF && storage && !error_flag)
 		return (read_last(&storage));
 	return (NULL);
 }
