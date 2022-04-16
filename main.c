@@ -4,9 +4,8 @@
 
 int main()
 {
-	int		fd;
+	int		fd, line;
 	char	*ret;
-	int		i = 0;
 
 	fd = open("test.txt", O_RDONLY);
 
@@ -14,11 +13,11 @@ int main()
 
 	while((ret = get_next_line(fd)) > 0)
 	{
-		printf(">%d : %s", i, ret);
+		printf(">%d : %s", line, ret);
 		free(ret);
-		i++;
+		line++;
 	}
-	printf("\n->%d : %s", i, ret); // (NULL)
+	printf("\n->%d : %s", line, ret); // (NULL)
 	free(ret);
 
 	close(fd);
