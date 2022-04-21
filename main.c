@@ -2,6 +2,8 @@
 #include <fcntl.h>
 #include <stdio.h>
 
+/* <--------------- Mandatory part main ---------------> */
+
 // int main()
 // {
 // 	int		fd, line;
@@ -19,15 +21,16 @@
 // 		line++;
 // 	}
 // 	printf("\n->%d : %s", line, ret); // 마지막 (NULL) 출력
-// 	free(ret);
 
+// 	free(ret);
 // 	close(fd);
 
 // 	return 0;
 // }
 
 // gcc -Wall -Wextra -Werror -D BUFFER_SIZE=42 ./get_next_line.c ./get_next_line_utils.c ./main.c
-// lldb : -g -fsanitize=address
+
+/* <--------------- Bonus part main ---------------> */
 
 int main()
 {
@@ -57,3 +60,4 @@ int main()
 }
 
 // gcc -Wall -Wextra -Werror -D BUFFER_SIZE=42 ./get_next_line_bonus.c ./get_next_line_utils_bonus.c ./main.c
+// lldb : -g -fsanitize=address
