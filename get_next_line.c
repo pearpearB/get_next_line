@@ -54,11 +54,11 @@ char	*get_next_line(int fd)
 	int			read_size;
 	int			error_flag;
 
-	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	read_size = read(fd, buf, BUFFER_SIZE);
 	error_flag = 0;
+	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (fd < 0 || BUFFER_SIZE < 1 || !buf)
 		error_flag = 1;
+	read_size = read(fd, buf, BUFFER_SIZE);
 	while (read_size >= READ_SUCCESS && !error_flag)
 	{
 		buf[read_size] = '\0';
