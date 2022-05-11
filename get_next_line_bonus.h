@@ -17,12 +17,8 @@
 # include <stdlib.h>
 # include <limits.h>
 
-# if OPEN_MAX > 10240
-# define ARRAY_MAX OPEN_MAX
-# endif
-
-# if OPEN_MAX <= 10240
-# define ARRAY_MAX 10240
+# ifndef OPEN_MAX
+#  define OPEN_MAX 10240
 # endif
 
 # ifndef BUFFER_SIZE
