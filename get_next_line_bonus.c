@@ -49,7 +49,7 @@ static char	*read_last(char	**storage)
 
 char	*get_next_line(int fd)
 {
-	static char	*storage[ARRAY_MAX];
+	static char	*storage[OPEN_MAX];
 	char		*buf;
 	int			read_size;
 	int			error_flag;
